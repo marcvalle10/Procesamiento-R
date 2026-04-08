@@ -5,10 +5,12 @@ Este directorio contiene el procesamiento y análisis de datos de una encuesta s
 ## Estructura del Directorio
 
 ### Scripts de R
+
 - **procesamiento_fitness.R**: Script principal para el procesamiento inicial de los datos de la encuesta. Incluye limpieza de datos, transformación y preparación para análisis.
 - **analisis_fitness.R**: Script para realizar análisis estadísticos avanzados sobre los datos procesados, incluyendo distribuciones, correlaciones y resúmenes.
 
 ### Archivos de Datos Procesados
+
 - **fitness_survey_clean.csv**: Conjunto de datos limpio y procesado de la encuesta de fitness.
 - **fitness_survey_categorical_frequencies.csv**: Frecuencias de variables categóricas en la encuesta.
 - **fitness_survey_numeric_summary.csv**: Resumen estadístico de variables numéricas.
@@ -18,7 +20,9 @@ Este directorio contiene el procesamiento y análisis de datos de una encuesta s
 - **online_service_challenges_long.csv**: Datos en formato largo sobre desafíos en servicios en línea.
 
 ### Resultados de Análisis (Archivos CSV)
+
 Estos archivos contienen los resultados de diversos análisis realizados sobre los datos:
+
 - **analisis_age_distribution.csv**: Distribución de edades de los encuestados.
 - **analisis_age_vs_frequency.csv**: Análisis de edad versus frecuencia de ejercicio.
 - **analisis_education_distribution.csv**: Distribución de niveles educativos.
@@ -44,6 +48,7 @@ Estos archivos contienen los resultados de diversos análisis realizados sobre l
 3. **Interpretación de Resultados**: Los archivos CSV de análisis contienen resúmenes y estadísticas que pueden ser utilizados para informes o visualizaciones adicionales.
 
 ## Notas Adicionales
+
 - Los datos originales de la encuesta no están incluidos en este directorio; solo los procesados y resultados de análisis.
 - Para reproducir los análisis, asegúrate de que los datos de entrada estén disponibles en las rutas esperadas por los scripts.
 - Este proyecto forma parte de un curso de Sistemas Interactivos en la universidad.
