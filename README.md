@@ -2,6 +2,8 @@
 
 Este directorio contiene el procesamiento y análisis de datos de una encuesta sobre hábitos de fitness y nutrición. El proyecto utiliza R para limpiar, procesar y analizar los datos de la encuesta, generando diversos análisis estadísticos y visualizaciones.
 
+## Alumno: Vallejo Leyva Marcos
+
 ## Estructura del Directorio
 
 ### Scripts de R

@@ -1,24 +1,148 @@
-"id","variable","description"
-"1","timestamp","Timestamp"
-"2","location","Location (city name or district name)"
-"3","gender","Gender"
-"4","age","Age (in years)"
-"5","education","What is the highest level of education you have completed?"
-"6","wellness_routine","What would best describe a wellness/fitness routine you follow or are likely to follow?"
-"7","challenge_wellness_routine","Which of the followings would best describe the main challenge you face that restricts you from following a regular wellness/fitness routine? (you can choose more than one option)"
-"8","frequency_wellness_routine","How often do you follow a wellness/fitness routine?"
-"9","duration_wellness_routine","Whenever you practice your wellness/fitness routine, how much time on average do you spend (in minutes)?"
-"10","purpose_wellness_routine","Which of the following would best describe your purpose to follow a wellness/fitness routine?"
-"11","location_wellness_routine","Your general place of wellness/fitness routine is"
-"12","simple_target_exercises","Do you look for simple and target specific-exercises ?"
-"13","nutrition_importance","In your opinion, how important is following a well-balanced nutrition diet routine along with a wellness/fitness routine?"
-"14","challenge_nutrition_routine","Which of the followings would best describe the main challenge(s) you face that restrict you from following a well-balanced nutrition diet routine? (you can choose more than one option)"
-"15","remote_training_likelihood","How likely would you be to try a remote/online mode of training for your wellness/fitness routine?"
-"16","online_service_challenges" ,"What would best describe the challenge(s) to use an online wellness/fitness service as a mainstream method to achieve your wellness/fitness goals? (you can choose more than one option)"
-"17","willingness_to_pay","How much would you be willing to pay for such an online wellness/fitness training service (INR/month)?"
-"18","ideal_subscription_cycle","If you were to subscribe such an online  wellness/fitness training service, what would describe the ideal subscription cycle for you?"
-"19","price_of_service","Please rate your preferences for each of the following criteria while choosing a wellness/fitness service provider [Price of service]"
-"20","expertise_credibility","Please rate your preferences for each of the following criteria while choosing a wellness/fitness service provider [Expertise credibility of the trainer(s)]"
-"21","language_instructions","Please rate your preferences for each of the following criteria while choosing a wellness/fitness service provider [Language of training/practice instructions in your regional language as compared to English?]"
-"22","flexibility_time_slots","Please rate your preferences for each of the following criteria while choosing a wellness/fitness service provider [Flexibility of choosing different time slots for training/practice on different days]"
-"23","availability_hybrid_options","Please rate your preferences for each of the following criteria while choosing a wellness/fitness service provider [Availability of hybrid options for training/practice (ability to choose online and offline training session as per my convenience)]"
+Code Book del proyecto fitness,,
+,,
+A. Variables del dataset procesado (fitness_clean),,
+,,
+Variable,Tipo,Descripción
+id,Numérica entera,Identificador secuencial único para cada encuestado. Se genera en el script de procesamiento.
+timestamp,Fecha-hora (POSIXct),Fecha y hora en que el encuestado respondió la encuesta.
+location,Texto,Ciudad o ubicación reportada por el encuestado. Fue limpiada y normalizada parcialmente.
+gender,Texto,Género del encuestado.
+age,Factor ordinal,"Grupo de edad del encuestado. Niveles: Less than 18, 18-24, 25-34, 35-44, 45-54, More than 55."
+education,Factor ordinal,"Nivel educativo simplificado. Niveles: Other, High school, College, Undergraduate, Post-Graduate."
+wellness_routine,Texto,Tipo de rutina de bienestar o ejercicio que sigue o estaría dispuesto a seguir el encuestado.
+challenge_wellness_routine,Texto,Respuesta original de retos para mantener una rutina fitness. Puede contener múltiples respuestas separadas por comas.
+frequency_wellness_routine,Texto,Frecuencia con que el encuestado sigue una rutina de bienestar o fitness.
+duration_wellness_routine,Texto,Duración promedio de cada sesión de rutina fitness.
+purpose_wellness_routine,Texto,Propósito principal para seguir una rutina fitness.
+location_wellness_routine,Texto,Lugar donde el encuestado realiza su rutina fitness.
+simple_target_exercises,Numérica,Nivel de preferencia por ejercicios simples y específicos. Escala numérica original de la encuesta.
+nutrition_importance,Numérica,Importancia asignada a seguir una rutina de nutrición balanceada junto con la rutina fitness. Escala numérica original.
+challenge_nutrition_routine,Texto,Respuesta original de retos para seguir una dieta balanceada. Puede contener múltiples respuestas separadas por comas.
+remote_training_likelihood,Texto,Disposición del encuestado para probar entrenamiento remoto u online.
+online_service_challenges,Texto,Respuesta original sobre retos de usar servicios de entrenamiento online. Puede contener múltiples respuestas separadas por comas.
+willingness_to_pay,Texto,Rango de pago mensual que el encuestado estaría dispuesto a pagar por un servicio fitness online.
+ideal_subscription_cycle,Texto,Tipo de suscripción preferida para un servicio fitness online.
+price_of_service,Factor ordinal,Importancia del precio del servicio. Niveles Likert: Not important at all a Very Important.
+expertise_credibility,Factor ordinal,Importancia de la credibilidad del entrenador. Niveles Likert.
+language_instructions,Factor ordinal,Importancia del idioma de las instrucciones de entrenamiento. Niveles Likert.
+flexibility_time_slots,Factor ordinal,Importancia de la flexibilidad de horarios. Niveles Likert.
+availability_hybrid_options,Factor ordinal,Importancia de contar con opciones híbridas de entrenamiento. Niveles Likert.
+,,
+,,
+B. Variables de los datasets largos generados en procesamiento,,
+,,
+1. challenge_wellness_routine_long.csv,,
+,,
+Variable,Tipo,Descripción
+id,Numérica entera,Identificador del encuestado.
+challenge_wellness_routine,Texto,Reto individual reportado para mantener una rutina fitness. Cada fila representa una sola respuesta.
+,,
+2. challenge_nutrition_routine_long.csv,,
+,,
+Variable,Tipo,Descripción
+id,Numérica entera,Identificador del encuestado.
+challenge_nutrition_routine,Texto,Reto individual reportado para seguir una rutina de nutrición. Cada fila representa una sola respuesta.
+,,
+3. online_service_challenges_long.csv,,
+,,
+Variable,Tipo,Descripción
+id,Numérica entera,Identificador del encuestado.
+online_service_challenges,Texto,Reto individual reportado para usar servicios fitness online. Cada fila representa una sola respuesta.
+,,
+,,
+C. Variables de salida del script de análisis,,
+,,
+"Estas no son variables del dataset original, sino tablas resultado que genera analisis_fitness.R.",,
+,,
+1. analisis_gender_distribution.csv,,
+,,
+Variable,Tipo,Descripción
+gender,Texto,Género del encuestado.
+count,Numérica entera,Número de encuestados en esa categoría.
+percentage,Numérica,Porcentaje respecto al total de la muestra.
+,,
+2. analisis_age_distribution.csv,,
+,,
+Variable,Tipo,Descripción
+age,Factor ordinal,Grupo de edad.
+count,Numérica entera,Frecuencia de cada grupo de edad.
+percentage,Numérica,Porcentaje de cada grupo de edad.
+,,
+3. analisis_education_distribution.csv,,
+,,
+Variable,Tipo,Descripción
+education,Factor ordinal,Nivel educativo agrupado.
+count,Numérica entera,Frecuencia de cada nivel educativo.
+percentage,Numérica,Porcentaje de cada nivel educativo.
+,,
+4. analisis_top_locations.csv,,
+,,
+Variable,Tipo,Descripción
+location,Texto,Ubicación del encuestado ya limpiada.
+count,Numérica entera,Frecuencia de cada ubicación.
+percentage,Numérica,Porcentaje de cada ubicación.
+,,
+5. analisis_remote_training_distribution.csv,,
+,,
+Variable,Tipo,Descripción
+remote_training_likelihood,Texto,Nivel de disposición a usar entrenamiento remoto.
+count,Numérica entera,Frecuencia por categoría.
+percentage,Numérica,Porcentaje por categoría.
+,,
+6. analisis_willingness_to_pay_distribution.csv,,
+,,
+Variable,Tipo,Descripción
+willingness_to_pay,Texto,Rango de pago mensual dispuesto a pagar.
+count,Numérica entera,Frecuencia por rango.
+percentage,Numérica,Porcentaje por rango.
+,,
+7. analisis_age_vs_frequency.csv,,
+,,
+Variable,Tipo,Descripción
+age,Factor ordinal,Grupo de edad.
+frequency_wellness_routine,Texto,Frecuencia de la rutina fitness.
+count,Numérica entera,Número de casos en esa combinación.
+percentage,Numérica,Porcentaje dentro del grupo de edad.
+,,
+8. analisis_gender_vs_remote_training.csv,,
+,,
+Variable,Tipo,Descripción
+gender,Texto,Género del encuestado.
+remote_training_likelihood,Texto,Disposición a usar entrenamiento remoto.
+count,Numérica entera,Número de casos en esa combinación.
+percentage,Numérica,Porcentaje dentro del género.
+,,
+9. analisis_education_vs_willingness_to_pay.csv,,
+,,
+Variable,Tipo,Descripción
+education,Factor ordinal,Nivel educativo agrupado.
+willingness_to_pay,Texto,Rango de pago dispuesto a pagar.
+count,Numérica entera,Número de casos en esa combinación.
+percentage,Numérica,Porcentaje dentro del nivel educativo.
+,,
+10. analisis_top_wellness_challenges.csv,,
+,,
+Variable,Tipo,Descripción
+challenge_wellness_routine,Texto,Reto individual relacionado con la rutina fitness.
+count,Numérica entera,Número de veces que aparece ese reto.
+percentage,Numérica,Porcentaje respecto al total de respuestas separadas.
+,,
+11. analisis_top_nutrition_challenges.csv,,
+,,
+Variable,Tipo,Descripción
+challenge_nutrition_routine,Texto,Reto individual relacionado con la nutrición.
+count,Numérica entera,Número de veces que aparece ese reto.
+percentage,Numérica,Porcentaje respecto al total de respuestas separadas.
+,,
+12. analisis_top_online_service_challenges.csv,,
+,,
+Variable,Tipo,Descripción
+online_service_challenges,Texto,Reto individual relacionado con servicios fitness online.
+count,Numérica entera,Número de veces que aparece ese reto.
+percentage,Numérica,Porcentaje respecto al total de respuestas separadas.
+,,
+13. analisis_likert_mean_scores.csv,,
+,,
+Variable,Tipo,Descripción
+variable,Texto,Nombre de la variable Likert analizada.
+mean_score,Numérica,Promedio del puntaje asignado a esa variable en escala de 1 a 5.
